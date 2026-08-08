@@ -90,7 +90,7 @@ class AiMusicGenerator {
   void _composeAmbient(_ComposeContext ctx, Float64List out) {
     final reverb = Reverb(ctx.sampleRate, roomSize: 0.6, decay: 0.7);
     final scale = _scaleFreqs(ctx.rootNote, 'major', base: 'octave2');
-    final chordProg = _progressAm(ctx, scale);
+    final chordProg = _progressAm(scale);
 
     final noteDur = (ctx.sampleRate * 4).round();
     final dt = 1 / ctx.sampleRate;
