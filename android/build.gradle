@@ -16,6 +16,23 @@ subprojects {
     project.evaluationDependsOn(':app')
 }
 
+subprojects { sp ->
+    sp.plugins.withId('com.android.library') {
+        sp.android {
+            if (namespace == null) {
+                namespace sp.group.toString().replaceAll(':', '.')
+            }
+        }
+    }
+    sp.plugins.withId('com.android.application') {
+        sp.android {
+            if (namespace == null) {
+                namespace sp.group.toString().replaceAll(':', '.')
+            }
+        }
+    }
+}
+
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
