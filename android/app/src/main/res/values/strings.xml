@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_description">控制当前播放的音乐</string>
+    <string name="widget_label">袭明音乐</string>
+
+    <string name="shortcut_play_short">继续播放</string>
+    <string name="shortcut_play_long">继续播放上一首</string>
+    <string name="shortcut_ai_short">AI 场景</string>
+    <string name="shortcut_ai_long">打开 AI 智能场景</string>
+    <string name="shortcut_history_short">播放历史</string>
+    <string name="shortcut_history_long">查看最近听过的歌曲</string>
+</resources>

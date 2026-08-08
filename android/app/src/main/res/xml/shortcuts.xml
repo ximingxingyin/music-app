@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:shortcutId="play_now"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_play"
+        android:shortcutShortLabel="@string/shortcut_play_short"
+        android:shortcutLongLabel="@string/shortcut_play_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.ximing.music"
+            android:targetClass="com.ximing.music.MainActivity"
+            android:data="ximing://now-playing" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="ai_scene"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_ai"
+        android:shortcutShortLabel="@string/shortcut_ai_short"
+        android:shortcutLongLabel="@string/shortcut_ai_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.ximing.music"
+            android:targetClass="com.ximing.music.MainActivity"
+            android:data="ximing://ai-scene" />
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="recent"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_history"
+        android:shortcutShortLabel="@string/shortcut_history_short"
+        android:shortcutLongLabel="@string/shortcut_history_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.ximing.music"
+            android:targetClass="com.ximing.music.MainActivity"
+            android:data="ximing://history" />
+    </shortcut>
+</shortcuts>
