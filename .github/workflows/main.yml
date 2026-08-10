@@ -22,12 +22,19 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
+          flutter-version: '3.24.5'
 
-      - name: Ensure Flutter template files
-        run: flutter create . --platforms android --org com.ximing --project-name music_app
+      - name: Clean build cache
+        run: flutter clean
 
       - name: Install dependencies
         run: flutter pub get
+
+      - name: Generate Drift code
+        run: dart run build_runner build --delete-conflicting-outputs
+
+      - name: Verify generated files
+        run: ls -la lib/data/database/
 
       - name: Build release APK
         run: flutter build apk --release
