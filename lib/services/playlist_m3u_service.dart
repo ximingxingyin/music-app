@@ -29,7 +29,7 @@ class PlaylistM3uService {
       "FROM tracks t INNER JOIN playlist_tracks pt ON pt.track_id = t.id "
       "WHERE pt.playlist_id = ? ORDER BY pt.position ASC",
       variables: [Variable.withString(playlistId)],
-      readsFrom: {tracks, playlistTracks},
+      readsFrom: {_db.tracks, _db.playlistTracks},
     ).get();
 
     if (rows.isEmpty) {
@@ -124,7 +124,7 @@ class PlaylistM3uService {
       final row = await _db.customSelect(
         "SELECT id FROM tracks WHERE uri = ? OR uri LIKE ? LIMIT 1",
         variables: [Variable.withString(c), Variable.withString('%${p.basename(c)}')],
-        readsFrom: {tracks},
+        readsFrom: {_db.tracks},
       ).getSingleOrNull();
       if (row != null) {
         return row.read<String>('id');
