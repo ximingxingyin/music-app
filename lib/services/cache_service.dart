@@ -133,13 +133,13 @@ class CacheService {
 
   /// 标记已播放（用于 LRU 排序）。
   Future<void> markPlayed(String trackId) async {
-   await _db.customStatement(
-  'UPDATE cached_tracks SET last_played_at = ? WHERE id = ?',
-  [
-    Variable.withDateTime(DateTime.now()),
-    Variable.withString(trackId),
-  ],
-);
+    await _db.customStatement(
+      'UPDATE cached_tracks SET last_played_at = ? WHERE id = ?',
+      [
+        Variable.withDateTime(DateTime.now()),
+        Variable.withString(trackId),
+      ],
+    );
   }
 
   /// 删除单个缓存（公开 API）

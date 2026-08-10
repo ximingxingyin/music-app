@@ -232,7 +232,7 @@ class _AlbumsTab extends ConsumerWidget {
                       child: a.coverPath == null
                           ? Container(
                               color:
-                                  Colors.deepPurple.withValues(alpha: 0.3),
+                                  Colors.deepPurple.withOpacity(0.3),
                               child: const Icon(Icons.album,
                                   size: 56, color: Colors.white70),
                             )
@@ -241,7 +241,7 @@ class _AlbumsTab extends ConsumerWidget {
                               fit: BoxFit.cover,
                               errorBuilder: (_, __, ___) => Container(
                                 color: Colors.deepPurple
-                                    .withValues(alpha: 0.3),
+                                    .withOpacity(0.3),
                                 child: const Icon(Icons.album,
                                     size: 56, color: Colors.white70),
                               ),
@@ -294,7 +294,7 @@ class _ArtistsTab extends ConsumerWidget {
                   child: a.coverPath == null
                       ? CircleAvatar(
                           backgroundColor:
-                              Colors.teal.withValues(alpha: 0.4),
+                              Colors.teal.withOpacity(0.4),
                           child: Text(a.artist.isNotEmpty ? a.artist[0] : '?'),
                         )
                       : Image.file(
@@ -302,7 +302,7 @@ class _ArtistsTab extends ConsumerWidget {
                           fit: BoxFit.cover,
                           errorBuilder: (_, __, ___) => CircleAvatar(
                             backgroundColor:
-                                Colors.teal.withValues(alpha: 0.4),
+                                Colors.teal.withOpacity(0.4),
                             child:
                                 Text(a.artist.isNotEmpty ? a.artist[0] : '?'),
                           ),
@@ -407,7 +407,7 @@ class _AiShortcutTab extends StatelessWidget {
                 '通勤 / 运动 / 睡前 / 专注 / 休闲\n'
                 '一键匹配本地音乐库最适合的曲目',
                 style: TextStyle(
-                    color: Colors.white.withValues(alpha: 0.9), fontSize: 13),
+                    color: Colors.white.withOpacity(0.9), fontSize: 13),
               ),
               const SizedBox(height: 16),
               SizedBox(
@@ -448,7 +448,7 @@ class _AiShortcutTab extends StatelessWidget {
                 '输入一段描述\n'
                 '生成属于你自己的原创音乐',
                 style: TextStyle(
-                    color: Colors.white.withValues(alpha: 0.9), fontSize: 13),
+                    color: Colors.white.withOpacity(0.9), fontSize: 13),
               ),
               const SizedBox(height: 16),
               SizedBox(
@@ -538,8 +538,8 @@ class _HistoryEntry extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Colors.deepPurple.withValues(alpha: 0.4),
-                Colors.blue.withValues(alpha: 0.3),
+                Colors.deepPurple.withOpacity(0.4),
+                Colors.blue.withOpacity(0.3),
               ],
             ),
             borderRadius: BorderRadius.circular(12),
@@ -550,7 +550,7 @@ class _HistoryEntry extends StatelessWidget {
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.2),
+                  color: Colors.white.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: const Icon(Icons.history, size: 22, color: Colors.white),

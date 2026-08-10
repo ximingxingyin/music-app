@@ -134,7 +134,7 @@ class _DownloadDialogState extends ConsumerState<_DownloadDialog> {
                 : '请检查网络',
             style: TextStyle(
               fontSize: 12,
-              color: Colors.white.withValues(alpha: 0.6),
+              color: Colors.white.withOpacity(0.6),
             ),
           ),
         ],

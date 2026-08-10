@@ -37,7 +37,7 @@ class LyricPickerSheet extends ConsumerWidget {
                 Text(
                   '自动识别失败？手动指定一个 .lrc 文件即可。',
                   style: TextStyle(
-                    color: Colors.white.withValues(alpha: 0.6),
+                    color: Colors.white.withOpacity(0.6),
                     fontSize: 12,
                   ),
                 ),

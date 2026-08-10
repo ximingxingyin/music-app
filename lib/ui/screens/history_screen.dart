@@ -46,7 +46,7 @@ class HistoryScreen extends ConsumerWidget {
                   child: Text(
                     _labelForDate(entry.key),
                     style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.5),
+                      color: Colors.white.withOpacity(0.5),
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
                     ),
@@ -64,7 +64,7 @@ class HistoryScreen extends ConsumerWidget {
                     trailing: Text(
                       DateFormat('HH:mm').format(h.playedAt),
                       style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.4),
+                        color: Colors.white.withOpacity(0.4),
                         fontSize: 11,
                       ),
                     ),

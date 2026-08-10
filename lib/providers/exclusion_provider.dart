@@ -51,7 +51,7 @@ class CleanupService {
     final db = ref.read(databaseProvider);
     final rows = await db.customSelect(
       "SELECT id, uri FROM tracks WHERE id NOT LIKE 'ai:%' AND id NOT LIKE 'jamendo:%' AND id NOT LIKE 'audius:%'",
-      readsFrom: {tracks},
+      readsFrom: {db.tracks},
     ).get();
 
     var removed = 0;

@@ -97,7 +97,7 @@ class StatsScreen extends ConsumerWidget {
                   '\n'
                   '缓存管理请到 设置 → 在线资源 → 离线缓存。',
                   style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.6),
+                      color: Colors.white.withOpacity(0.6),
                       fontSize: 12,
                       height: 1.6),
                 ),
@@ -141,7 +141,7 @@ class _StatCard extends StatelessWidget {
             width: 48,
             height: 48,
             decoration: BoxDecoration(
-              color: color.withValues(alpha: 0.3),
+              color: color.withOpacity(0.3),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(icon, color: color, size: 24),
@@ -153,7 +153,7 @@ class _StatCard extends StatelessWidget {
               children: [
                 Text(title,
                     style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.6),
+                        color: Colors.white.withOpacity(0.6),
                         fontSize: 13)),
                 const SizedBox(height: 4),
                 Text(value,

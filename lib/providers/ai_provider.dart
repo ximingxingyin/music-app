@@ -102,7 +102,7 @@ final aiGeneratedTracksProvider =
   final db = ref.watch(databaseProvider);
   final rows = await db.customSelect(
     "SELECT * FROM tracks WHERE id LIKE 'ai:%' ORDER BY rowid DESC LIMIT 50",
-    readsFrom: {tracks},
+    readsFrom: {db.tracks},
   ).get();
   return rows.map((r) {
     return Track(

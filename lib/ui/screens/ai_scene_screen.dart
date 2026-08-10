@@ -104,7 +104,7 @@ class _AiSceneScreenState extends ConsumerState<AiSceneScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
               child: Material(
                 color: active
-                    ? Colors.deepPurple.withValues(alpha: 0.3)
+                    ? Colors.deepPurple.withOpacity(0.3)
                     : const Color(0xFF1A1A24),
                 borderRadius: BorderRadius.circular(12),
                 child: InkWell(
@@ -216,7 +216,7 @@ class _AiSceneScreenState extends ConsumerState<AiSceneScreen> {
                 '准确率约 60-70%。v0.5+ 将集成 ONNX 模型做 BPM / 情绪检测，'
                 '准确率可提升到 85%+。',
                 style: TextStyle(
-                    color: Colors.white.withValues(alpha: 0.5), fontSize: 11),
+                    color: Colors.white.withOpacity(0.5), fontSize: 11),
               ),
             ),
           ),

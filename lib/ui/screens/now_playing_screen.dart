@@ -312,7 +312,7 @@ void _showSpeedSheet(BuildContext context, WidgetRef ref) {
               Text(
                 '当前 ${cur}x',
                 style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.6),
+                  color: Colors.white.withOpacity(0.6),
                   fontSize: 12,
                 ),
               ),
@@ -349,8 +349,8 @@ class _CoverPlaceholder extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Colors.deepPurple.withValues(alpha: 0.6),
-            Colors.blue.withValues(alpha: 0.4),
+            Colors.deepPurple.withOpacity(0.6),
+            Colors.blue.withOpacity(0.4),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -418,7 +418,7 @@ class _ProgressBar extends StatelessWidget {
             LinearProgressIndicator(
               value: bufMs / maxMs,
               backgroundColor: Colors.white12,
-              valueColor: AlwaysStoppedAnimation(Colors.white.withValues(alpha: 0.3)),
+              valueColor: AlwaysStoppedAnimation(Colors.white.withOpacity(0.3)),
               minHeight: 3,
             ),
             Slider(
@@ -635,7 +635,7 @@ class _SleepTimerAction extends ConsumerWidget {
                           ? '将在 ${ctrl.remaining!.inMinutes} 分钟后自动暂停'
                           : '到时间后自动暂停播放',
                       style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.6),
+                        color: Colors.white.withOpacity(0.6),
                         fontSize: 12,
                       ),
                     ),
@@ -706,7 +706,7 @@ class _LyricsArea extends ConsumerWidget {
                   '或点击右上角歌词图标手动指定',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.white.withValues(alpha: 0.3),
+                    color: Colors.white.withOpacity(0.3),
                     fontSize: 10,
                     height: 1.5,
                   ),
@@ -837,7 +837,7 @@ class _LrcViewState extends ConsumerState<_LrcView> {
                   style: TextStyle(
                     color: active
                         ? Colors.white
-                        : Colors.white.withValues(alpha: 0.4),
+                        : Colors.white.withOpacity(0.4),
                     fontSize:
                         active ? s.activeFontSize : s.inactiveFontSize,
                     fontWeight:
@@ -855,8 +855,8 @@ class _LrcViewState extends ConsumerState<_LrcView> {
                           : TextAlign.start,
                       style: TextStyle(
                         color: active
-                            ? Colors.white.withValues(alpha: 0.7)
-                            : Colors.white.withValues(alpha: 0.3),
+                            ? Colors.white.withOpacity(0.7)
+                            : Colors.white.withOpacity(0.3),
                         fontSize: active
                             ? s.translationFontSize
                             : s.inactiveTranslationFontSize,

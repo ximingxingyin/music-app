@@ -99,7 +99,7 @@ class _AiComposeScreenState extends ConsumerState<AiComposeScreen> {
           Text(
             _genre.desc,
             style: TextStyle(
-                color: Colors.white.withValues(alpha: 0.4), fontSize: 12),
+                color: Colors.white.withOpacity(0.4), fontSize: 12),
           ),
           const SizedBox(height: 24),
           const Text('时长（秒）',
@@ -115,7 +115,7 @@ class _AiComposeScreenState extends ConsumerState<AiComposeScreen> {
           Text(
             '$_duration 秒 · 约 ${(_duration * 0.5).toStringAsFixed(0)} KB',
             style: TextStyle(
-                color: Colors.white.withValues(alpha: 0.5), fontSize: 12),
+                color: Colors.white.withOpacity(0.5), fontSize: 12),
           ),
           const SizedBox(height: 24),
           SizedBox(
@@ -148,7 +148,7 @@ class _AiComposeScreenState extends ConsumerState<AiComposeScreen> {
               '是原创合成音，不是模仿任何已有歌曲。\n'
               'v0.7+ 将集成 Suno / 网易"星辰"等云端 AI，生成质量可质变。',
               style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.5), fontSize: 11),
+                  color: Colors.white.withOpacity(0.5), fontSize: 11),
             ),
           ),
           const SizedBox(height: 24),
@@ -161,7 +161,7 @@ class _AiComposeScreenState extends ConsumerState<AiComposeScreen> {
                 return Text(
                   '还没有生成过',
                   style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.4),
+                      color: Colors.white.withOpacity(0.4),
                       fontSize: 12),
                 );
               }

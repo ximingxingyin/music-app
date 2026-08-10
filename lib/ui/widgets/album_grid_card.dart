@@ -29,14 +29,14 @@ class AlbumGridCard extends StatelessWidget {
               aspectRatio: 1,
               child: coverUrl == null || coverUrl!.isEmpty
                   ? Container(
-                      color: Colors.deepPurple.withValues(alpha: 0.3),
+                      color: Colors.deepPurple.withOpacity(0.3),
                       child: const Icon(Icons.album, size: 40, color: Colors.white70),
                     )
                   : Image.network(
                       coverUrl!,
                       fit: BoxFit.cover,
                       errorBuilder: (_, __, ___) => Container(
-                        color: Colors.deepPurple.withValues(alpha: 0.3),
+                        color: Colors.deepPurple.withOpacity(0.3),
                         child: const Icon(Icons.album, size: 40, color: Colors.white70),
                       ),
                     ),
@@ -54,7 +54,7 @@ class AlbumGridCard extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              color: Colors.white.withValues(alpha: 0.6),
+              color: Colors.white.withOpacity(0.6),
               fontSize: 12,
             ),
           ),

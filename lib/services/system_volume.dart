@@ -4,17 +4,19 @@ import 'package:screen_brightness/screen_brightness.dart';
 
 /// 屏幕亮度控制
 class SystemBrightness {
+  static final _sb = ScreenBrightness();
+
   /// 设置屏幕亮度（0.0 - 1.0）
   static Future<void> set(double v) async {
     try {
-      await ScreenBrightness.instance.setApplicationScreenBrightness(v.clamp(0.0, 1.0));
+      await _sb.setScreenBrightness(v.clamp(0.0, 1.0));
     } catch (_) {}
   }
 
   /// 获取当前应用屏幕亮度
   static Future<double> get() async {
     try {
-      final v = await ScreenBrightness.instance.applicationScreenBrightness;
+      final v = await _sb.current;
       return v ?? 0.5;
     } catch (_) {
       return 0.5;
@@ -30,7 +32,7 @@ class SystemBrightness {
   /// 恢复系统亮度
   static Future<void> reset() async {
     try {
-      await ScreenBrightness.instance.resetApplicationScreenBrightness();
+      await _sb.resetScreenBrightness();
     } catch (_) {}
   }
 }

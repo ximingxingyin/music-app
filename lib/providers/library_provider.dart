@@ -74,7 +74,7 @@ final historyProvider = FutureProvider<List<HistoryItem>>((ref) async {
   final trackRows = await db.customSelect(
     "SELECT * FROM tracks WHERE id IN ($placeholders)",
     variables: ids.map(Variable.withString).toList(),
-    readsFrom: {tracks},
+    readsFrom: {db.tracks},
   ).get();
   final trackMap = {for (final r in trackRows) r.read<String>('id'): r};
   final result = <HistoryItem>[];
@@ -90,7 +90,7 @@ final historyProvider = FutureProvider<List<HistoryItem>>((ref) async {
         duration: Duration(milliseconds: t.read<int>('duration_ms')),
         uri: t.read<String>('uri'),
         source: TrackSource.local,
-        albumArtUrl: t.readNullableString('album_art_uri'),
+        albumArtUrl: t.readNullable<String>('album_art_uri'),
       ),
       playedAt: h.playedAt,
     ));

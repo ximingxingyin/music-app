@@ -70,7 +70,7 @@ class CacheManagementScreen extends ConsumerWidget {
                       Text(
                         '${s.count} 首已缓存 · 超出上限时按"最近播放"自动清理',
                         style: TextStyle(
-                            color: Colors.white.withValues(alpha: 0.5),
+                            color: Colors.white.withOpacity(0.5),
                             fontSize: 12),
                       ),
                     ],
@@ -167,8 +167,8 @@ class _CacheRow extends ConsumerWidget {
         return ListTile(
           leading: CircleAvatar(
             backgroundColor: row.source == 'jamendo'
-                ? Colors.deepPurple.withValues(alpha: 0.4)
-                : Colors.teal.withValues(alpha: 0.4),
+                ? Colors.deepPurple.withOpacity(0.4)
+                : Colors.teal.withOpacity(0.4),
             child: Icon(
               row.source == 'jamendo' ? Icons.public : Icons.graphic_eq,
               size: 18,
@@ -182,7 +182,7 @@ class _CacheRow extends ConsumerWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-                color: Colors.white.withValues(alpha: 0.6), fontSize: 12),
+                color: Colors.white.withOpacity(0.6), fontSize: 12),
           ),
           trailing: IconButton(
             icon: const Icon(Icons.delete_outline, color: Colors.white60),

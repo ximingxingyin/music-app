@@ -71,7 +71,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen>
             hintText: '搜索本地 / Jamendo / Audius',
             border: InputBorder.none,
             hintStyle: TextStyle(
-              color: Colors.white.withValues(alpha: 0.5),
+              color: Colors.white.withOpacity(0.5),
             ),
           ),
           style: const TextStyle(fontSize: 18),
@@ -129,7 +129,7 @@ class _EmptyState extends ConsumerWidget {
       children: [
         const SizedBox(height: 32),
         Icon(Icons.search,
-            size: 56, color: Colors.white.withValues(alpha: 0.2)),
+            size: 56, color: Colors.white.withOpacity(0.2)),
         const SizedBox(height: 16),
         const Center(
           child: Text('输入关键词开始搜索',
@@ -142,7 +142,7 @@ class _EmptyState extends ConsumerWidget {
             'Jamendo：欧美独立音乐（CC 协议）\n'
             'Audius：当前仅支持热门榜单',
             style: TextStyle(
-                color: Colors.white.withValues(alpha: 0.4),
+                color: Colors.white.withOpacity(0.4),
                 fontSize: 12,
                 height: 1.6),
             textAlign: TextAlign.center,
@@ -159,7 +159,7 @@ class _EmptyState extends ConsumerWidget {
                       children: [
                         Text('最近搜索',
                             style: TextStyle(
-                                color: Colors.white.withValues(alpha: 0.5),
+                                color: Colors.white.withOpacity(0.5),
                                 fontSize: 12)),
                         const Spacer(),
                         TextButton(
@@ -196,7 +196,7 @@ class _EmptyState extends ConsumerWidget {
                   children: [
                     Text('热门搜索',
                         style: TextStyle(
-                            color: Colors.white.withValues(alpha: 0.5),
+                            color: Colors.white.withOpacity(0.5),
                             fontSize: 12)),
                     const SizedBox(height: 8),
                     Wrap(

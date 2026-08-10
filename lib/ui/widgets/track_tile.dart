@@ -18,11 +18,13 @@ class TrackTile extends ConsumerWidget {
     required this.track,
     required this.onTap,
     this.trailing,
+    this.onMore,
   });
 
   final Track track;
   final VoidCallback onTap;
   final Widget? trailing;
+  final VoidCallback? onMore;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -47,18 +49,23 @@ class TrackTile extends ConsumerWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
-          color: Colors.white.withValues(alpha: 0.6),
+          color: Colors.white.withOpacity(0.6),
           fontSize: 12,
         ),
       ),
       trailing: trailing ??
-          Text(
-            formatDurationShort(track.duration),
-            style: TextStyle(
-              color: Colors.white.withValues(alpha: 0.5),
-              fontSize: 12,
-            ),
-          ),
+          (onMore != null
+              ? IconButton(
+                  icon: const Icon(Icons.more_vert, size: 20),
+                  onPressed: onMore,
+                )
+              : Text(
+                  formatDurationShort(track.duration),
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.5),
+                    fontSize: 12,
+                  ),
+                )),
       onLongPress: () => _showActions(context, ref),
     );
   }
@@ -105,7 +112,7 @@ class TrackTile extends ConsumerWidget {
                 child: Text(
                   '加入歌单',
                   style: TextStyle(
-                    color: Colors.white.withValues(alpha: 0.6),
+                    color: Colors.white.withOpacity(0.6),
                     fontSize: 12,
                   ),
                 ),
@@ -181,7 +188,7 @@ class _AlbumCover extends StatelessWidget {
     final url = track.albumArtUrl;
     if (url == null || url.isEmpty) {
       return Container(
-        color: Colors.deepPurple.withValues(alpha: 0.3),
+        color: Colors.deepPurple.withOpacity(0.3),
         child: const Icon(Icons.music_note, color: Colors.white70),
       );
     }
@@ -192,7 +199,7 @@ class _AlbumCover extends StatelessWidget {
         File(url),
         fit: BoxFit.cover,
         errorBuilder: (_, __, ___) => Container(
-          color: Colors.deepPurple.withValues(alpha: 0.3),
+          color: Colors.deepPurple.withOpacity(0.3),
           child: const Icon(Icons.music_note, color: Colors.white70),
         ),
       );
@@ -201,7 +208,7 @@ class _AlbumCover extends StatelessWidget {
       url,
       fit: BoxFit.cover,
       errorBuilder: (_, __, ___) => Container(
-        color: Colors.deepPurple.withValues(alpha: 0.3),
+        color: Colors.deepPurple.withOpacity(0.3),
         child: const Icon(Icons.music_note, color: Colors.white70),
       ),
     );

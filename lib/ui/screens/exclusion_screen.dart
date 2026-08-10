@@ -28,7 +28,7 @@ class ExclusionScreen extends ConsumerWidget {
                 '扫描时将跳过黑名单中的文件夹。\n'
                 '例如录音、播客下载文件夹，避免污染曲库。',
                 style: TextStyle(
-                    color: Colors.white.withValues(alpha: 0.6),
+                    color: Colors.white.withOpacity(0.6),
                     fontSize: 12,
                     height: 1.5),
               ),
@@ -62,7 +62,7 @@ class ExclusionScreen extends ConsumerWidget {
                     child: Text(
                       '暂无排除的文件夹',
                       style: TextStyle(
-                          color: Colors.white.withValues(alpha: 0.4),
+                          color: Colors.white.withOpacity(0.4),
                           fontSize: 13),
                     ),
                   ),
@@ -80,7 +80,7 @@ class ExclusionScreen extends ConsumerWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                            color: Colors.white.withValues(alpha: 0.4),
+                            color: Colors.white.withOpacity(0.4),
                             fontSize: 10)),
                     trailing: IconButton(
                       icon: const Icon(Icons.close, size: 18),

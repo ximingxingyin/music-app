@@ -84,7 +84,7 @@ class _MiniPlayerBody extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.6),
+                        color: Colors.white.withOpacity(0.6),
                         fontSize: 12,
                       ),
                     ),
@@ -126,7 +126,7 @@ class _AlbumArt extends StatelessWidget {
         height: 44,
         child: url == null || url!.isEmpty
             ? Container(
-                color: Colors.deepPurple.withValues(alpha: 0.4),
+                color: Colors.deepPurple.withOpacity(0.4),
                 child: const Icon(Icons.music_note, color: Colors.white70),
               )
             : (_isLocalFile(url!) && File(url!).existsSync()
@@ -134,7 +134,7 @@ class _AlbumArt extends StatelessWidget {
                     File(url!),
                     fit: BoxFit.cover,
                     errorBuilder: (_, __, ___) => Container(
-                      color: Colors.deepPurple.withValues(alpha: 0.4),
+                      color: Colors.deepPurple.withOpacity(0.4),
                       child:
                           const Icon(Icons.music_note, color: Colors.white70),
                     ),
@@ -143,7 +143,7 @@ class _AlbumArt extends StatelessWidget {
                     url!,
                     fit: BoxFit.cover,
                     errorBuilder: (_, __, ___) => Container(
-                      color: Colors.deepPurple.withValues(alpha: 0.4),
+                      color: Colors.deepPurple.withOpacity(0.4),
                       child: const Icon(Icons.music_note,
                           color: Colors.white70),
                     ),

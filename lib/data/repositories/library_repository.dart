@@ -1,6 +1,7 @@
 import '../../core/constants.dart';
 import '../database/database.dart';
 import '../models/track.dart';
+
 /// 把数据库行映射成统一的 Track 模型。
 Track trackFromRow(TrackRow r) {
   return Track(

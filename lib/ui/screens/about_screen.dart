@@ -36,7 +36,7 @@ class AboutScreen extends StatelessWidget {
                 Text(
                   'v0.7.1',
                   style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.5),
+                      color: Colors.white.withOpacity(0.5),
                       fontSize: 14),
                 ),
               ],
@@ -83,7 +83,7 @@ class AboutScreen extends StatelessWidget {
             child: Text(
               '© 2026 袭明音乐',
               style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.4), fontSize: 12),
+                  color: Colors.white.withOpacity(0.4), fontSize: 12),
             ),
           ),
           const SizedBox(height: 32),
@@ -104,7 +104,7 @@ class _Section extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-          color: Colors.white.withValues(alpha: 0.5),
+          color: Colors.white.withOpacity(0.5),
           fontSize: 12,
           letterSpacing: 1.2,
           fontWeight: FontWeight.w600,

@@ -50,7 +50,7 @@ class AppDatabase extends _$AppDatabase {
   Future<void> incrementPlayCount(String id) async {
     await customStatement(
       'UPDATE tracks SET play_count = play_count + 1 WHERE id = ?',
-      variables: [Variable.withString(id)],
+      [Variable.withString(id)],
     );
   }
 
@@ -102,7 +102,7 @@ class AppDatabase extends _$AppDatabase {
   Future<void> deletePlaylist(String id) async {
     await customStatement(
       'DELETE FROM playlist_tracks WHERE playlist_id = ?',
-      variables: [Variable.withString(id)],
+      [Variable.withString(id)],
     );
     await (delete(playlists)..where((p) => p.id.equals(id))).go();
   }

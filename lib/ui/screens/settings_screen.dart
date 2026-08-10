@@ -268,7 +268,7 @@ class SettingsScreen extends ConsumerWidget {
                     '前一行的歌词',
                     textAlign: s.centerAlign ? TextAlign.center : TextAlign.left,
                     style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.4),
+                      color: Colors.white.withOpacity(0.4),
                       fontSize: s.inactiveFontSize,
                     ),
                   ),
@@ -277,7 +277,7 @@ class SettingsScreen extends ConsumerWidget {
                     '再前一行的歌词',
                     textAlign: s.centerAlign ? TextAlign.center : TextAlign.left,
                     style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.4),
+                      color: Colors.white.withOpacity(0.4),
                       fontSize: s.inactiveFontSize,
                     ),
                   ),
@@ -305,7 +305,7 @@ class SettingsScreen extends ConsumerWidget {
             child: Text(
               '袭明音乐 · v0.7.1',
               style: TextStyle(
-                color: Colors.white.withValues(alpha: 0.3),
+                color: Colors.white.withOpacity(0.3),
                 fontSize: 12,
               ),
             ),
@@ -327,7 +327,7 @@ class _SectionHeader extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-          color: Colors.white.withValues(alpha: 0.5),
+          color: Colors.white.withOpacity(0.5),
           fontSize: 12,
           letterSpacing: 1.2,
         ),
@@ -402,12 +402,12 @@ class _EqualizerScreen extends ConsumerWidget {
               decoration: BoxDecoration(
                 color: const Color(0xFF1A1A24),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.amber.withValues(alpha: 0.4)),
+                border: Border.all(color: Colors.amber.withOpacity(0.4)),
               ),
               child: Row(
                 children: [
                   Icon(Icons.info_outline,
-                      color: Colors.amber.withValues(alpha: 0.8)),
+                      color: Colors.amber.withOpacity(0.8)),
                   const SizedBox(width: 12),
                   const Expanded(
                     child: Text(
@@ -493,7 +493,7 @@ class _EqPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final gridPaint = Paint()
-      ..color = Colors.white.withValues(alpha: 0.08)
+      ..color = Colors.white.withOpacity(0.08)
       ..strokeWidth = 1;
     final center = size.height / 2;
     for (var i = 0; i < 4; i++) {

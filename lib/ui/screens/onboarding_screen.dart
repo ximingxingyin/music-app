@@ -165,8 +165,8 @@ class _IntroPage extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.deepPurple.withValues(alpha: 0.5),
-                  Colors.blue.withValues(alpha: 0.4),
+                  Colors.deepPurple.withOpacity(0.5),
+                  Colors.blue.withOpacity(0.4),
                 ],
               ),
               shape: BoxShape.circle,

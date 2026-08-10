@@ -38,11 +38,11 @@ class LibraryActions {
   Future<void> deletePlaylist(String id) async {
     await _db.customStatement(
       'DELETE FROM playlist_tracks WHERE playlist_id = ?',
-      variables: [Variable.withString(id)],
+      [Variable.withString(id)],
     );
     await _db.customStatement(
       'DELETE FROM playlists WHERE id = ?',
-      variables: [Variable.withString(id)],
+      [Variable.withString(id)],
     );
     ref.invalidate(playlistsProvider);
   }
@@ -54,7 +54,7 @@ class LibraryActions {
         Variable.withString(playlistId),
         Variable.withString(track.id),
       ],
-      readsFrom: {playlistTracks},
+      readsFrom: {_db.playlistTracks},
     ).getSingle();
     final count = existing.read<int>('cnt');
     await _db.addTrackToPlaylist(
@@ -68,7 +68,7 @@ class LibraryActions {
   Future<void> removeTrackFromPlaylist(String playlistId, String trackId) async {
     await _db.customStatement(
       'DELETE FROM playlist_tracks WHERE playlist_id = ? AND track_id = ?',
-      variables: [Variable.withString(playlistId), Variable.withString(trackId)],
+      [Variable.withString(playlistId), Variable.withString(trackId)],
     );
     ref.invalidate(playlistsProvider);
     ref.invalidate(playlistTracksProvider(playlistId));
@@ -128,7 +128,7 @@ final playlistsProvider = FutureProvider<List<PlaylistSummary>>((ref) async {
     final row = await db.customSelect(
       "SELECT COUNT(*) AS cnt FROM playlist_tracks WHERE playlist_id = ?",
       variables: [Variable.withString(p.id)],
-      readsFrom: {playlistTracks},
+      readsFrom: {db.playlistTracks},
     ).getSingle();
     summaries.add(PlaylistSummary(
       id: p.id,
@@ -149,7 +149,7 @@ final playlistTracksProvider =
     "WHERE pt.playlist_id = ? "
     "ORDER BY pt.position ASC",
     variables: [Variable.withString(playlistId)],
-    readsFrom: {tracks, playlistTracks},
+    readsFrom: {db.tracks, db.playlistTracks},
   ).get();
   return rows.map((r) {
     return Track(
@@ -160,7 +160,7 @@ final playlistTracksProvider =
       duration: Duration(milliseconds: r.read<int>('duration_ms')),
       uri: r.read<String>('uri'),
       source: TrackSource.local,
-      albumArtUrl: r.readNullableString('album_art_uri'),
+      albumArtUrl: r.readNullable<String>('album_art_uri'),
     );
   }).toList();
 });
