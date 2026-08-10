@@ -33,8 +33,7 @@ jobs:
       - name: Generate Drift code
         run: |
           flutter pub get
-          dart pub global activate build_runner
-          dart pub global run build_runner build --delete-conflicting-outputs
+          dart run build_runner build --delete-conflicting-outputs
 
       - name: Verify generated files
         run: ls -la lib/data/database/
