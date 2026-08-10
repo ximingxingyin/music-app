@@ -1,0 +1,43 @@
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+
+    // AGP 8.x 要求每个模块必须设置 namespace。
+    // 对于老插件（如 on_audio_query_android）没有 namespace 的，自动注入。
+    afterEvaluate { project ->
+        if (project.hasProperty('android')) {
+            project.android {
+                if (namespace == null) {
+                    def manifestFile = project.file('src/main/AndroidManifest.xml')
+                    if (manifestFile.exists()) {
+                        def manifestText = manifestFile.text
+                        def match = manifestText =~ /package=\"([^\"]+)\"/
+                        if (match.find()) {
+                            namespace match.group(1)
+                        }
+                    }
+                    if (namespace == null) {
+                        namespace "com.ximing.music.${project.name.replaceAll('-', '_')}"
+                    }
+                }
+            }
+        }
+    }
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
