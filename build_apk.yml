@@ -1,0 +1,67 @@
+name: Build APK
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      # 补齐 gradle wrapper 等缺失的模板文件（不会覆盖已有文件）
+      - name: Ensure Flutter template files
+        run: flutter create . --platforms android --org com.ximing --project-name music_app
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      # 修补 on_audio_query_android 老插件缺 namespace 的问题（AGP 8 强制要求）
+      - name: Patch on_audio_query_android namespace
+        run: |
+          PLUGIN_DIR=$(find ~/.pub-cache/hosted -type d -name "on_audio_query_android-*" | head -1)
+          if [ -n "$PLUGIN_DIR" ]; then
+            GRADLE_FILE="$PLUGIN_DIR/android/build.gradle"
+            if [ -f "$GRADLE_FILE" ]; then
+              if ! grep -q "namespace" "$GRADLE_FILE"; then
+                echo "Injecting namespace into $GRADLE_FILE"
+                sed -i 's/^android {/android {\n    namespace "com.ximing.music.on_audio_query"/' "$GRADLE_FILE"
+              fi
+            fi
+          fi
+          PLUGIN_DIR2=$(find ~/.pub-cache/hosted -type d -name "just_audio_background-*" | head -1)
+          if [ -n "$PLUGIN_DIR2" ]; then
+            GRADLE_FILE="$PLUGIN_DIR2/android/build.gradle"
+            if [ -f "$GRADLE_FILE" ]; then
+              if ! grep -q "namespace" "$GRADLE_FILE"; then
+                echo "Injecting namespace into $GRADLE_FILE"
+                sed -i 's/^android {/android {\n    namespace "com.ximing.music.just_audio_background"/' "$GRADLE_FILE"
+              fi
+            fi
+          fi
+
+      - name: Generate Drift code
+        run: dart run build_runner build --delete-conflicting-outputs
+
+      - name: Build release APK
+        run: flutter build apk --release
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
